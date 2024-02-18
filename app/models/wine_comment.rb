@@ -1,0 +1,2 @@
+class WineComment < ApplicationRecord
+end
