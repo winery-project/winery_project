@@ -1,0 +1,35 @@
+<h1>Public::Countries#index</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-7 mx-auto">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>国旗画像</th>
+            <th>国名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @countries.each do |country| %>
+            <tr>
+              <td>
+                <%= link_to admin_country_path(country) do %>
+                  <%= image_tag country.get_flag_image(100,50) %>
+                <% end %>
+              </td>
+              <td>
+                <%= country.name %>
+              </td>
+              <td>
+                <%= link_to "Show", country_path(country), class:"btn btn-block btn-info" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

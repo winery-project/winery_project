@@ -1,0 +1,18 @@
+<div class="col-4 mx-auto">
+    <h3>国編集フォーム</h3>
+      <%= form_with model: [:admin, @country] do |f| %>
+        <div class="form-group">
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :flag_image %><br>
+          <%= f.file_field :flag_image, acccept: '*/image' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit '更新' %>
+        </div>
+      <% end %>
+    </div>
