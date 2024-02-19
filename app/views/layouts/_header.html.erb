@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= link_to homes_top_path do %>
+        <i class="fas fa-wine-glass"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <ul>
+      <% if customer_signed_in? %>
+        <li>
+          <%= link_to destroy_customer_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> Log out
+          <% end %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li>
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> Log out
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to homes_top_path do %>
+            <i class="fas fa-home"></i> Home
+          <% end %>
+        </li>
+        <li>
+          <%= link_to homes_about_path  do %>
+            <i class="fas fa-link"></i> About
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_customer_registration_path do %>
+            <i class="fas fa-user-plus"></i> Sign up
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_customer_session_path do %>
+            <i class="fas fa-sign-in-alt"></i> Log in
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
