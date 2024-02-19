@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'wines/edit'
   end
   namespace :admin do
-    get 'homes/top'
+    get '/' => 'homes#top'
   end
   namespace :public do
     get 'deliveries/index'
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     get 'customers/edit'
     get 'customers/confirm'
   end
-  namespace :public do
+  scope module: :public do
     get 'homes/top'
     get 'homes/about'
   end
