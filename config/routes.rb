@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: 'admin/sessions'
+  }
+
+  devise_for :customers, skip: [:passwords], controllers: {
+    sessions: 'public/sessions',
+    registrations: 'public/registrations'
+  }
+
+
   namespace :admin do
     get 'orders/index'
     get 'orders/show'
@@ -56,13 +66,5 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
 
-  devise_for :admins, :controller => {
-    sessions: 'admin/sessions'
-  }
-
-  devise_for :customers, :controller => {
-    sessions: 'public/sessions',
-    registrations: 'public/registrations'
-  }
 
 end
