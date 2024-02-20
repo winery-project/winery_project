@@ -13,9 +13,9 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>企業ロゴ</th>
-            <th>企業名</th>
-            <th>国</th>
+            <th></th>
+            <th>Name</th>
+            <th>Nationality</th>
             <th></th>
           </tr>
         </thead>
@@ -35,7 +35,7 @@
                 <%= company.country.name %>
               </td>
               <td>
-                <%= link_to "詳細", admin_company_path(company), class:"btn btn-block btn-info" %>
+                <%= link_to "Details", admin_company_path(company), class:"btn btn-block btn-info" %>
               </td>
             </tr>
           <% end %>

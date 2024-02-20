@@ -1,5 +1,5 @@
 <div class="col-4 offset-md-1">
-    <h3>企業新規登録フォーム</h3>
+    <h3>New Company</h3>
       <%= form_with model: [:admin, @company] do |f| %>
         <div class="form-group">
           <%= f.label :name %><br>
@@ -19,7 +19,7 @@
 
         <div class="form-group">
           <%= f.label :country %><br>
-          <%= f.collection_select :country_id, Country.all, :id, :name, include_blank: "選択してください" %>
+          <%= f.collection_select :country_id, Country.all, :id, :name, include_blank: "Select" %>
         </div>
 
         <div class="form-group">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit '送信' %>
+          <%= f.submit 'Submit' %>
         </div>
       <% end %>
     </div>
