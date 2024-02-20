@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'customers/show'
     get 'customers/edit'
+    patch 'customers/update'
     get 'customers/confirm'
   end
 

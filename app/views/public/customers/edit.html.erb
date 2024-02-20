@@ -1,2 +1,70 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h1>会員情報編集</h1>
+<p>ここではあなたの登録した情報を編集できます．</p>
+<% if @customer.errors.any? %>
+  <div id="error_explanation">
+    <h3>
+      <%= @customer.errors.count %> errors prohibited this obj from being saved:
+    </h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<form action="<%= _path(@customer) %>" method="post">
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-2">カナ</div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="セイ">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="メイ">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-2">名前</div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="性">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="名">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label for="phone_number" class="col-sm-2">電話番号</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label for="postal_code" class="col-sm-2">郵便番号</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label for="address" class="col-sm-2">住所</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <button type="update" class="btn btn-warning">Update</button>
+  </div>
+</form>
+
