@@ -1,0 +1,53 @@
+<h1>Admin::Countries#index</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>国旗画像</th>
+            <th>国名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @countries.each do |country| %>
+            <tr>
+              <td>
+                <%= link_to admin_country_path(country) do %>
+                  <%= image_tag country.get_flag_image(100,50) %>
+                <% end %>
+              </td>
+              <td>
+                <%= country.name %>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_admin_country_path(country), class:"btn btn-block btn-info" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-4 offset-md-1">
+    <h3>国新規登録フォーム</h3>
+      <%= form_with model: [:admin, @country] do |f| %>
+        <div class="form-group">
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :flag_image %><br>
+          <%= f.file_field :flag_image, acccept: '*/image' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit '送信' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

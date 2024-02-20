@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
+
+  namespace :admin do
+    resources :countries, only: [:index, :create, :destroy, :edit, :update]
+  end
   namespace :admin do
     get 'companies/index'
     get 'companies/show'
@@ -61,9 +65,12 @@ Rails.application.routes.draw do
     get 'customers/edit'
     get 'customers/confirm'
   end
+
   scope module: :public do
     get 'homes/top'
     get 'homes/about'
+
+    resources :countries, only: [:show, :index]
   end
 
 
