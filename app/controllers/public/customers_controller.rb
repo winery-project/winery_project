@@ -12,13 +12,22 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       flash[:notice] = "You have updated the user information successfully!"
-      redirect_to public_customers_show_path
+      redirect_to customers_path
     else
       render :edit
     end
   end
 
   def confirm
+  end
+
+  def withdrawl
+
+    customer = current_customer
+    if customer.update(is_active: false)
+      flash[:notice] = "You have withdrew successfully."
+      redirect_to new_customer_registration_path
+    end
   end
 
   private

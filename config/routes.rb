@@ -61,11 +61,6 @@ Rails.application.routes.draw do
     get 'companies/index'
     get 'companies/show'
   end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/confirm'
-  end
 
   scope module: :public do
     get 'homes/top'
@@ -76,7 +71,10 @@ Rails.application.routes.draw do
     resource :favorite_companies, only: [:create, :destroy]
   end
 
+  get '/customers' => 'public/customers#show', as:'customers'
+  get '/customers/information/edit' => 'public/customers#edit', as:'edit_customer'
+  get '/customers/confirm' => 'public/customers#confirm', as:'confirm_customer'
   patch '/customers/information' => 'public/customers#update', as:'customer'
-
+  patch '/customers/withdrawl' => 'public/customers#withdrawl', as:'withdrawl_customer'
 
 end
