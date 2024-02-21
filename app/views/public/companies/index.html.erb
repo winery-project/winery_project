@@ -6,9 +6,10 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>企業ロゴ</th>
-            <th>企業名</th>
-            <th>国</th>
+            <th></th>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -28,7 +29,18 @@
                 <%= company.country.name %>
               </td>
               <td>
-                <%= link_to "詳細", company_path(company), class:"btn btn-block btn-info" %>
+                <% if company.favorited_by?(current_customer) %>
+                  <%= link_to favorite_companies_path(favorite_company: {company_id: company.id}), method: :delete, class:"btn btn-block btn-danger" do %>
+                    <i class="fas fa-thumbs-up"></i> <%= company.favorite_companies.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to favorite_companies_path(favorite_company: {company_id: company.id}), method: :post, class:"btn btn-block btn-success" do %>
+                    <i class="far fa-thumbs-up"></i> <%= company.favorite_companies.count %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "details", company_path(company), class:"btn btn-block btn-info" %>
               </td>
             </tr>
           <% end %>

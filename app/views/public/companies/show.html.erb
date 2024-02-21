@@ -1,7 +1,7 @@
 <h1>Public::Companies#show</h1>
 
 <div class="container">
-  <div class="row">
+  <div class="row mb-4">
     <div class="col-6 offset-1">
       <h2><%= @company.name %></h2>
       <p><%= @company.introduction%></p>
@@ -9,19 +9,28 @@
   </div>
   <div class="row">
     <div class="col-6 offset-1">
-      <h3>基本情報</h3>
+      <h3>Information</h3>
       <table class="table table hover">
-        <tr><th>国</th><td><%= image_tag @company.country.get_flag_image(100, 50) %><br><%= @company.country.name %></td></tr>
-        <tr><th>メールアドレス</th><td><%= @company.email %></td></tr>
-        <tr><th>電話番号</th><td><%= @company.phone_number %></td></tr>
-        <tr><th>ステータス</th><td><%= @company.is_active %></td></tr>
+        <tr><th>Nationality</th><td><%= image_tag @company.country.get_flag_image(100, 50) %><br><%= @company.country.name %></td></tr>
+        <tr><th>Email</th><td><%= @company.email %></td></tr>
+        <tr><th>TEL</th><td><%= @company.phone_number %></td></tr>
+        <tr><th>Status</th><td><%= @company.is_active %></td></tr>
       </table>
 
-     <%= link_to "一覧へ戻る", companies_path(@company), class:"btn btn-secondary" %>
+     <%= link_to "Bacl", companies_path(@company), class:"btn btn-secondary" %>
 
     </div>
     <div class="col-4">
      <%= image_tag @company.get_logo_image(300,300) %><br>
+      <% if @company.favorited_by?(current_customer) %>
+        <%= link_to favorite_companies_path(favorite_company: {company_id: @company.id}), method: :delete, class:"btn btn-danger m-4" do %>
+          <i class="fas fa-thumbs-up"></i> <%= @company.favorite_companies.count %>　Dislike
+        <% end %>
+      <% else %>
+        <%= link_to favorite_companies_path(favorite_company: {company_id: @company.id}), method: :post, class:"btn btn-success m-4" do %>
+          <i class="far fa-thumbs-up"></i> <%= @company.favorite_companies.count %>　Like
+        <% end %>
+      <% end %>
     </div>
   </div>
 

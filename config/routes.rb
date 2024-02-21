@@ -73,6 +73,7 @@ Rails.application.routes.draw do
 
     resources :countries, only: [:show, :index]
     resources :companies, only: [:show, :index]
+    resource :favorite_companies, only: [:create, :destroy]
   end
 
 

@@ -6,8 +6,8 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>国旗画像</th>
-            <th>国名</th>
+            <th></th>
+            <th>Name</th>
             <th></th>
           </tr>
         </thead>
@@ -23,7 +23,7 @@
                 <%= country.name %>
               </td>
               <td>
-                <%= link_to "Show", country_path(country), class:"btn btn-block btn-info" %>
+                <%= link_to "details", country_path(country), class:"btn btn-block btn-success" %>
               </td>
             </tr>
           <% end %>
