@@ -63,7 +63,6 @@ Rails.application.routes.draw do
   namespace :public do
     get 'customers/show'
     get 'customers/edit'
-    patch 'customers/update'
     get 'customers/confirm'
   end
 
@@ -73,6 +72,8 @@ Rails.application.routes.draw do
 
     resources :countries, only: [:show, :index]
   end
+
+  patch '/customers/information' => 'public/customers#update', as:'customer'
 
 
 end

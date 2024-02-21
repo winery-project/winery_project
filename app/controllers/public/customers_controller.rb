@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @Customer = current_customer
+    @customer = current_customer
     if @customer.update(customer_params)
       flash[:notice] = "You have updated the user information successfully!"
       redirect_to public_customers_show_path

@@ -12,17 +12,17 @@
     </ul>
   </div>
 <% end %>
-<form action="<%= _path(@customer) %>" method="post">
+<%= form_with model: @customer do |f| %>
   <div class="container">
     <div class="row">
       <div class="form-group">
         <div class="row">
           <div class="col-sm-2">カナ</div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="セイ">
+            <%= f.text_field :last_name_kana, class:"form-control" %>
           </div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="メイ">
+            <%= f.text_field :first_name_kana, class:"form-control" %>
           </div>
         </div>
       </div>
@@ -32,10 +32,10 @@
         <div class="row">
           <div class="col-sm-2">名前</div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="性">
+            <%= f.text_field :last_name, class:"form-control" %>
           </div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="名">
+            <%= f.text_field :first_name, class:"form-control" %>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
       <div class="row">
         <label for="phone_number" class="col-sm-2">電話番号</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control">
+          <%= f.text_field :phone_number, class:"form-control" %>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
       <div class="row">
         <label for="postal_code" class="col-sm-2">郵便番号</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control">
+          <%= f.text_field :postal_code, class:"form-control" %>
         </div>
       </div>
     </div>
@@ -60,11 +60,11 @@
       <div class="row">
         <label for="address" class="col-sm-2">住所</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control">
+          <%= f.text_field :address, class:"form-control" %>
         </div>
       </div>
     </div>
-    <button type="update" class="btn btn-warning">Update</button>
+    <%= f.submit 'Update Your Information', class:"btn btn-success" %>
   </div>
-</form>
+<% end %>
 
