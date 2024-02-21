@@ -1,2 +1,29 @@
 <h1>Admin::Companies#show</h1>
-<p>Find me in app/views/admin/companies/show.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-1">
+      <h2><%= @company.name %></h2>
+      <p><%= @company.introduction%></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-1">
+      <h3>Information</h3>
+      <table class="table table hover">
+        <tr><th>Nationality</th><td><%= image_tag @company.country.get_flag_image(100, 50) %><br><%= @company.country.name %></td></tr>
+        <tr><th>Email</th><td><%= @company.email %></td></tr>
+        <tr><th>TEL</th><td><%= @company.phone_number %></td></tr>
+        <tr><th>Status</th><td><%= @company.is_active %></td></tr>
+      </table>
+
+     <%= link_to "Edit", edit_admin_company_path(@company), class:"btn btn-success" %>
+     <%= link_to "Back", admin_companies_path(@company), class:"btn btn-secondary" %>
+
+    </div>
+    <div class="col-4">
+     <%= image_tag @company.get_logo_image(300,300) %><br>
+    </div>
+  </div>
+
+</div>
