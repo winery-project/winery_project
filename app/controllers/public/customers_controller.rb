@@ -22,9 +22,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdrawl
-
     customer = current_customer
     if customer.update(is_active: false)
+      reset_session
       flash[:notice] = "You have withdrew successfully."
       redirect_to new_customer_registration_path
     end

@@ -35,9 +35,12 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def confirm_customer_status
-    unless current_customer.is_active
-      redirect_to new_customer_registration
+    customer = Customer.find_by(email: params[:customer][:email])
+    return if customer.nil?
+    return unless customer.valid_password?(params[:customer][:password])
+    unless customer.is_active
+      flash[:notice] = "You have already withdrew."
+      redirect_to new_customer_registration_path
     end
   end
-
 end
