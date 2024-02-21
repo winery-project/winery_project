@@ -1,2 +1,39 @@
 <h1>Public::Companies#index</h1>
-<p>Find me in app/views/public/companies/index.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>企業ロゴ</th>
+            <th>企業名</th>
+            <th>国</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @companies.each do |company| %>
+            <tr>
+              <td>
+                <%= link_to company_path(company) do %>
+                  <%= image_tag company.get_logo_image(50,50) %>
+                <% end %>
+              </td>
+              <td>
+                <%= company.name %>
+              </td>
+              <td>
+                <%= image_tag company.country.get_flag_image(100, 50) %><br>
+                <%= company.country.name %>
+              </td>
+              <td>
+                <%= link_to "詳細", company_path(company), class:"btn btn-block btn-info" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
