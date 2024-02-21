@@ -44,3 +44,16 @@ company_1 = Company.create!(
   country_id: country_fr.id,
   logo_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/pernod_ricard.jpeg")), filename: 'pernod_ricard.jpeg')
 )
+
+Genre.create!(
+  name: 'Red Wine'
+)
+
+Genre.create!(
+  name: 'White Wine'
+)
+
+Genre.create!(
+  name: 'Rose Wine'
+)
+

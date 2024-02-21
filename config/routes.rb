@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :countries, only: [:index, :create, :destroy, :edit, :update]
     resources :companies, only: [:index, :create, :show, :edit, :update, :new]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
+
   namespace :admin do
     get 'companies/index'
     get 'companies/show'
