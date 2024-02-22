@@ -32,7 +32,7 @@ class Admin::WinesController < ApplicationController
     @wine = Wine.find(params[:id])
     if @wine.update(wine_params)
       flash[:notice] = "You have updated the wine successfully."
-      redirect_to admin_wines_path
+      redirect_to admin_wine_path(@wine.id)
     else
       render :edit
     end
