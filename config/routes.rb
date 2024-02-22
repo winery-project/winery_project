@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :countries, only: [:index, :create, :destroy, :edit, :update]
     resources :companies, only: [:index, :create, :show, :edit, :update, :new]
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :wines, only: [:new, :show, :index, :create, :edit, :update, :destroy]
   end
 
   namespace :admin do

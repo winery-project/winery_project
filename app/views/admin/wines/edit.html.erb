@@ -1,2 +1,143 @@
-<h1>Admin::Wines#edit</h1>
-<p>Find me in app/views/admin/wines/edit.html.erb</p>
+<h1>ワイン編集</h1>
+<%= render 'admin/shared/error_messages', resource: @wine %>
+<%= form_with model: [:admin, @wine] do |f| %>
+  <div class="row">
+      <label for="name" class="col-sm-2">名前</label>
+      <div class="from-group col-sm-4">
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+      <label for="introduction" class="col-sm-2">説明文</label>
+      <div class="from-group col-sm-4">
+        <%= f.text_area :introduction, class:"form-control" %>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+      <label for="price" class="col-sm-2">税抜価格</label>
+      <div class="from-group col-sm-4">
+        <%= f.text_field :price, class:"form-control" %>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+
+    <div class="row">
+      <label for="maturity" class="col-sm-2">熟成度</label>
+      <%= f.radio_button :maturity, 1 %>
+      <%= f.label :maturity_level, '1' %>
+      <%= f.radio_button :maturity, 2 %>
+      <%= f.label :maturity_level, '2' %>
+      <%= f.radio_button :maturity, 3 %>
+      <%= f.label :maturity_level, '3' %>
+      <%= f.radio_button :maturity, 4 %>
+      <%= f.label :maturity_level, '4' %>
+      <%= f.radio_button :maturity, 5 %>
+      <%= f.label :maturity_level, '5' %>
+    </div>
+
+    <div class="row">
+      <label for="fruity" class="col-sm-2">フルーティーさ</label>
+      <%= f.radio_button :fruity, 1 %>
+      <%= f.label :fruity_level, '1' %>
+      <%= f.radio_button :fruity, 2 %>
+      <%= f.label :fruity_level, '2' %>
+      <%= f.radio_button :fruity, 3 %>
+      <%= f.label :fruity_level, '3' %>
+      <%= f.radio_button :fruity, 4 %>
+      <%= f.label :fruity_level, '4' %>
+      <%= f.radio_button :fruity, 5 %>
+      <%= f.label :fruity_level, '5' %>
+    </div>
+
+    <div class="row">
+      <label for="bitter" class="col-sm-2">苦味</label>
+      <%= f.radio_button :bitter, 1 %>
+      <%= f.label :bitter_level, '1' %>
+      <%= f.radio_button :bitter, 2 %>
+      <%= f.label :bitter_level, '2' %>
+      <%= f.radio_button :bitter, 3 %>
+      <%= f.label :bitter_level, '3' %>
+      <%= f.radio_button :bitter, 4 %>
+      <%= f.label :bitter_level, '4' %>
+      <%= f.radio_button :bitter, 5 %>
+      <%= f.label :bitter_level, '5' %>
+    </div>
+
+    <div class="row">
+      <label for="smooth" class="col-sm-2">滑らかさ</label>
+      <%= f.radio_button :smooth, 1 %>
+      <%= f.label :smooth_level, '1' %>
+      <%= f.radio_button :smooth, 2 %>
+      <%= f.label :smooth_level, '2' %>
+      <%= f.radio_button :smooth, 3 %>
+      <%= f.label :smooth_level, '3' %>
+      <%= f.radio_button :smooth, 4 %>
+      <%= f.label :smooth_level, '4' %>
+      <%= f.radio_button :smooth, 5 %>
+      <%= f.label :smooth_level, '5' %>
+    </div>
+
+    <div class="row">
+      <label for="aftertaste" class="col-sm-2">後味</label>
+      <%= f.radio_button :aftertaste, 1 %>
+      <%= f.label :aftertaste_level, '1' %>
+      <%= f.radio_button :aftertaste, 2 %>
+      <%= f.label :aftertaste_level, '2' %>
+      <%= f.radio_button :aftertaste, 3 %>
+      <%= f.label :aftertaste_level, '3' %>
+      <%= f.radio_button :aftertaste, 4 %>
+      <%= f.label :aftertaste_level, '4' %>
+      <%= f.radio_button :aftertaste, 5 %>
+      <%= f.label :aftertaste_level, '5' %>
+    </div>
+
+    <div class="row">
+      <label for="flavor" class="col-sm-2">香り</label>
+      <%= f.radio_button :flavor, 1 %>
+      <%= f.label :flavor_level, '1' %>
+      <%= f.radio_button :flavor, 2 %>
+      <%= f.label :flavor_level, '2' %>
+      <%= f.radio_button :flavor, 3 %>
+      <%= f.label :flavor_level, '3' %>
+      <%= f.radio_button :flavor, 4 %>
+      <%= f.label :flavor_level, '4' %>
+      <%= f.radio_button :flavor, 5 %>
+      <%= f.label :flavor_level, '5' %>
+    </div>
+
+    <div class="row">
+      <label for="genre_id" class="col-sm-2">ジャンル</label>
+      <div class="col-sm-4">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"}, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="  company_id" class="col-sm-2">所属企業</label>
+      <div class="col-sm-4">
+        <%= f.collection_select :company_id, Company.all, :id, :name, {prompt: "選択してください"}, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="genre_id" class="col-sm-2">国</label>
+      <div class="col-sm-4">
+        <%= f.collection_select :country_id, Country.all, :id, :name, {prompt: "選択してください"}, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="is_sold" class="col-sm-2">販売ステータス</label>
+      <%= f.radio_button :is_sold, 1 %>
+      <%= f.label :is_sold, '販売中' %>
+      <%= f.radio_button :is_sold, 0 %>
+      <%= f.label :is_sold, '販売停止中' %>
+    </div>
+
+    <div class="from-group col-sm-4">
+      <%= f.submit 'Edit wine', class:"btn btn-warning" %>
+    </div>
+  <% end %>
+

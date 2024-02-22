@@ -1,2 +1,34 @@
-<h1>Admin::Wines#show</h1>
-<p>Find me in app/views/admin/wines/show.html.erb</p>
+<h1>ワイン詳細</h1>
+<div class="container">
+  <table>
+    <tr>
+      <th>名前</th>
+      <td><%= @wine.name %></td>
+    </tr>
+    <tr>
+      <th>国</th>
+      <td><%= @wine.country.name %></td>
+    </tr>
+    <tr>
+      <th>企業</th>
+      <td><%= @wine.country.name %></td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td><%= @wine.genre.name %></td>
+    </tr>
+    <tr>
+      <th>税抜価格</th>
+      <td><%= @wine.price %></td>
+    </tr>
+    <tr>
+      <th>ステータス</th>
+      <% if @wine.is_sold %>
+        <td>販売中</td>
+      <% else %>
+        <td>販売停止中</td>
+      <% end %>
+    </tr>
+  </table>
+  <%= link_to 'Delete the wine', admin_wine_path(@wine.id), method: :delete %>
+</div>
