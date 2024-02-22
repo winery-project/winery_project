@@ -53,7 +53,9 @@ Rails.application.routes.draw do
     resources :companies, only: [:show, :index]
     resource :favorite_companies, only: [:create, :destroy]
     resources :deliveries, only: [:new, :index, :create, :edit, :update]
-    resources :wines, only: [:show, :index]
+    resources :wines, only: [:show, :index] do
+      resources :wine_comments, only: [:create, :destroy]
+    end
   end
 
   get '/customers' => 'public/customers#show', as:'customers'

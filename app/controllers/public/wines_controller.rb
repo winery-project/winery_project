@@ -5,5 +5,7 @@ class Public::WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
+    @comments = @wine.wine_comments
+    @comment = WineComment.new
   end
 end
