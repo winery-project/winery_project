@@ -1,4 +1,7 @@
 class Admin::CountriesController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_country, only: [:edit, :update]
+
   def create
     @country = Country.new(country_params)
     if @country.save
@@ -13,17 +16,20 @@ class Admin::CountriesController < ApplicationController
     @countries = Country.all
   end
 
-  def edit
-    @country = Country.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @country = Country.find(params[:id])
     if @country.update(country_params)
       redirect_to admin_countries_path
     else
       render :edit
     end
+  end
+
+  private
+
+  def set_country
+    @country = Country.find(params[:id])
   end
 
   def country_params
