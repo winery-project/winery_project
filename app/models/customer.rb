@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   validates :email, uniqueness: { scope: :is_active, if: -> { is_active == true } }
 
   has_many :favorite_companies, dependent: :destroy
+  has_many :deliveries, dependent: :destroy
 end

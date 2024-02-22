@@ -4,15 +4,15 @@ Admin.create!(
 )
 
 Customer.create!(
-  last_name: 'oshima',
-  first_name: 'taishu',
-  last_name_kana: 'オオシマ',
-  first_name_kana: 'タイシュウ',
+  last_name: 'サンプル',
+  first_name: '太郎',
+  last_name_kana: 'サンプル',
+  first_name_kana: 'タロウ',
   email: 'a@gmail.com',
   password: 'aaaaaa',
   postal_code: '1234567',
-  address: '横浜市南区永田東１−２４−２３',
-  phone_number: '08067750276'
+  address: '神奈川県鎌倉市南区',
+  phone_number: '000-0000-0000'
 )
 
 country_us = Country.create!(
