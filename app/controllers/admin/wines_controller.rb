@@ -6,6 +6,7 @@ class Admin::WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
+    @comments = @wine.wine_comments
   end
 
   def new

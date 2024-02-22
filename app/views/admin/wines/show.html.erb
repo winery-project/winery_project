@@ -2,7 +2,7 @@
 <div class="container">
 <%= link_to 'ワイン一覧へ', admin_wines_path %>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top: 10px;">
       <table>
         <tr>
           <th>名前</th>
@@ -34,6 +34,9 @@
         </tr>
       </table>
       <%= link_to 'Delete the wine', admin_wine_path(@wine.id), method: :delete %>
+      <div class="comments-index" style="margin-top: 10px;">
+        <%= render 'admin/wine_comments/index', comments: @comments %>
+      </div>
     </div>
     <div class="col-sm-6">
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
