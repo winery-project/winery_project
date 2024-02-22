@@ -1,2 +1,45 @@
 <h1>Public::Deliveries#index</h1>
-<p>Find me in app/views/public/deliveries/index.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="row justify-content-end">
+        <div class="m-2">
+          <%= link_to new_delivery_path do %>
+            <%= image_tag 'plus.png', size:"30x30" %>
+          <% end %>
+        </div>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Postal Code</th>
+            <th>Address</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deliveries.each do |delivery| %>
+            <tr>
+              <td>
+                <%= link_to delivery_path(delivery) do %>
+                  <%= delivery.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= delivery.postal_code %>
+              </td>
+              <td>
+                <%= delivery.address %>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_delivery_path(delivery), class:"btn btn-block btn-success" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

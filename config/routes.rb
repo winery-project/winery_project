@@ -21,10 +21,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'companies/index'
-    get 'companies/show'
-  end
-  namespace :admin do
     get 'customers/index'
     get 'customers/show'
   end
@@ -41,10 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
   end
-  namespace :public do
-    get 'deliveries/index'
-    get 'deliveries/edit'
-  end
+
   namespace :public do
     get 'orders/index'
     get 'orders/show'
@@ -59,10 +52,6 @@ Rails.application.routes.draw do
     get 'wines/index'
     get 'wines/show'
   end
-  namespace :public do
-    get 'companies/index'
-    get 'companies/show'
-  end
 
   scope module: :public do
     get 'homes/top'
@@ -71,6 +60,7 @@ Rails.application.routes.draw do
     resources :countries, only: [:show, :index]
     resources :companies, only: [:show, :index]
     resource :favorite_companies, only: [:create, :destroy]
+    resources :deliveries, only: [:new, :index, :create, :edit, :update]
   end
 
   get '/customers' => 'public/customers#show', as:'customers'
