@@ -1,0 +1,2 @@
+$(".comments-index").html("<%= j(render 'public/wine_comments/index', comments: @comments, wine: @wine, comment: @comment ) %>");
+$('#comment_textarea').val("");

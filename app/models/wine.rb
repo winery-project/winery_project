@@ -3,6 +3,8 @@ class Wine < ApplicationRecord
   belongs_to :genre
   belongs_to :company
 
+  has_many :wine_comments, dependent: :destroy
+
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
