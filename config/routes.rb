@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :countries, only: [:index, :create, :destroy, :edit, :update]
     resources :companies, only: [:index, :create, :show, :edit, :update, :new]
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :wines, only: [:new, :show, :index, :create, :edit, :update, :destroy]
   end
 
   namespace :admin do
@@ -27,12 +28,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'genres/index'
     get 'genres/edit'
-  end
-  namespace :admin do
-    get 'wines/index'
-    get 'wines/show'
-    get 'wines/new'
-    get 'wines/edit'
   end
   namespace :admin do
     get '/' => 'homes#top'
@@ -48,10 +43,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'cart_items/index'
   end
-  namespace :public do
-    get 'wines/index'
-    get 'wines/show'
-  end
+
 
   scope module: :public do
     get 'homes/top'
@@ -61,6 +53,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:show, :index]
     resource :favorite_companies, only: [:create, :destroy]
     resources :deliveries, only: [:new, :index, :create, :edit, :update]
+    resources :wines, only: [:show, :index]
   end
 
   get '/customers' => 'public/customers#show', as:'customers'

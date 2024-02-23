@@ -3,6 +3,7 @@ class Company < ApplicationRecord
 
   belongs_to :country
   has_many :favorite_companies, dependent: :destroy
+  has_many :wines, dependent: :destroy
 
   def get_logo_image(width, height)
     unless logo_image.attached?

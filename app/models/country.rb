@@ -1,6 +1,7 @@
 class Country < ApplicationRecord
   has_one_attached :flag_image
 
+  has_many :wines, dependent: :destroy
   has_many :countries, dependent: :destroy
 
   def get_flag_image(width, height)
