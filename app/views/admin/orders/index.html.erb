@@ -1,2 +1,28 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div>
+      <ul class="rounded-lg">
+          <% @orders.each do |order| %>
+            <%= link_to admin_order_path(order) do %>
+              <li>
+                <div>
+                  <p><%= l order.created_at, format: :short %></p>
+                  <p>
+                    <%= number_to_currency(order.total_price, unit: "¥", strip_insignificant_zeros: true) %>
+                  </p>
+                  <span>
+                    <%= order.status %>
+                  </span>
+                </div>
+                <div>
+                  <p>Name: <span><%= order.delivery_name %></span></p>
+                  <p>Postal Code: <span><%= order.delivery_postal_code %></span></p>
+                  <p>Address: <span><%= order.delivery_address %></span></p>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

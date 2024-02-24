@@ -1,2 +1,85 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h3>Order Confirmation</h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>wine</th>
+              <th>price</th>
+              <th>amount</th>
+              <th>total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td><%= cart_item.wine.name %></td>
+                <td><%= number_to_currency(cart_item.wine.price, unit: "¥", strip_insignificant_zeros: true) %></td>
+                <td>
+                  <%= cart_item.amount %>
+                </td>
+                <td><%= number_to_currency(cart_item.total_per_wine, unit: "¥", strip_insignificant_zeros: true) %></td>
+                <td><%= link_to 'delete', cart_item_path(cart_item), method: :delete, class:"btn btn-danger" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+         <h4>
+            Order Summary
+          </h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>subtotal</th>
+                <td><%= number_to_currency(@order.total_price - SHIPPING_COST, unit: "¥", strip_insignificant_zeros: true) %></td>
+              </tr>
+              <tr>
+                <th>postage</th>
+                <td><%= number_to_currency(SHIPPING_COST, unit: "¥", strip_insignificant_zeros: true) %></td>
+              </tr>
+              <tr>
+                <th>total</th>
+                <td><%= number_to_currency(@order.total_price, unit: "¥", strip_insignificant_zeros: true)%></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>
+            Billing Information
+          </h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>payment</th>
+                <td><%= @order.payment_method %></td>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <td><%= @order.delivery_name %></td>
+              </tr>
+              <tr>
+                <th>Postal Code</th>
+                <td><%= @order.delivery_postal_code %></td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td><%= @order.delivery_address %></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <%= form_with model: @order, method: :post do |f| %>
+            <%= f.hidden_field :delivery_name, :value => @order.delivery_name %>
+            <%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+            <%= f.hidden_field :delivery_address, :value => @order.delivery_address %>
+            <%= f.hidden_field :payment_method, :value => @order.payment_method%>
+            <%= f.hidden_field :shipping_cost, :value => SHIPPING_COST %>
+            <%= f.hidden_field :total_price, :value => @order.total_price %>
+            <%= f.submit "Proceed Order", class:"btn btn-secondary"%>
+          <% end %>
+    </div>
+  </div>
+</div>
