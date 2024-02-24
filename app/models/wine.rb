@@ -4,6 +4,7 @@ class Wine < ApplicationRecord
   belongs_to :company
 
   has_many :wine_comments, dependent: :destroy
+  has_many :favorite_wines, dependent: :destroy
 
   has_one_attached :wine_image
 
@@ -28,6 +29,10 @@ class Wine < ApplicationRecord
       wine_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     wine_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def favorited_by?(customer)
+    favorite_wines.exists?(customer_id: customer.id)
   end
 
 end
