@@ -26,10 +26,7 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index, :show, :update]
 
-    resources :wines do
-      resource :favorite_wines, only: [:create, :destroy]
-      resources :wine_comments, only: [:create, :destroy]
-    end
+    resources :wines
   end
 
   # Public routes
@@ -56,9 +53,8 @@ Rails.application.routes.draw do
 
     resources :wines, only: [:show, :index] do
       resources :wine_comments, only: [:create, :destroy]
+      resource :favorite_wines, only: [:create, :destroy]
     end
-  end
-
 
     resources :cart_items, only: [:index, :create, :update]
 

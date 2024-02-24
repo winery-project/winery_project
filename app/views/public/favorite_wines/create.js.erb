@@ -1,0 +1,2 @@
+$(".favorite-btn").html("<%= j(render 'public/favorite_wines/favorite', wine: @wine) %>");
+$("#favorite-btns-<%= @wine.id %>").html("<%= j(render 'public/favorite_wines/favorite', wine: @wine) %>");

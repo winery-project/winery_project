@@ -2,13 +2,19 @@
 <%= link_to 'ワインを新規追加', new_admin_wine_path %>
 
 <div class="container">
-  <% @wines.each do |wine| %>
-  <div class="row">
-    <div class="col-sm-4"><li><%= wine.name %></li></div>
-    <div class="col-sm-2"><%= link_to 'Show', admin_wine_path(wine.id) %></div>
-    <div class="col-sm-2"><%= link_to 'Edit', edit_admin_wine_path(wine.id) %></div>
-  </div>
-  <% end %>
+  <table style="width:100%;">
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= image_tag wine.get_wine_image(50, 50) %></td>
+        <td><%= wine.name %></td>
+        <td>
+          <i class="fas fa-heart"></i><%= wine.favorite_wines.count %>
+        </td>
+        <td><%= link_to 'Show', admin_wine_path(wine.id) %></td>
+        <td><%= link_to 'Edit', edit_admin_wine_path(wine.id) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 
