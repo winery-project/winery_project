@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
 
   has_many :favorite_companies, dependent: :destroy
   has_many :deliveries, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 
   enum is_active: {
     active: true,

@@ -3,7 +3,7 @@ Admin.create!(
   password: 'adminadmin'
 )
 
-Customer.create!(
+customer = Customer.create!(
   last_name: 'サンプル',
   first_name: '太郎',
   last_name_kana: 'サンプル',
@@ -13,6 +13,13 @@ Customer.create!(
   postal_code: '1234567',
   address: '神奈川県鎌倉市南区',
   phone_number: '000-0000-0000'
+)
+
+Delivery.create!(
+  customer_id: customer.id,
+  name: '配送先太郎',
+  postal_code: '111-1111',
+  address: '沖縄県国際通り３丁目'
 )
 
 country_us = Country.create!(
@@ -45,7 +52,7 @@ company_1 = Company.create!(
   logo_image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/pernod_ricard.jpeg")), filename: 'pernod_ricard.jpeg')
 )
 
-Genre.create!(
+genre_1 = Genre.create!(
   name: 'Red Wine'
 )
 
@@ -57,3 +64,18 @@ Genre.create!(
   name: 'Rose Wine'
 )
 
+wine_1= Wine.create!(
+  genre_id: genre_1.id,
+  company_id: company_1.id,
+  country_id: country_fr.id,
+  name: "Romanée Conti",
+  introduction: "Worlds's most famous and expensive French wine. Romanee Conti produces only 5000 to 6000 wines in a year, that is one of the reasons why they get highly priced.",
+  maturity: 5,
+  fruity: 3,
+  bitter: 4,
+  smooth: 4,
+  aftertaste: 5,
+  flavor: 4,
+  price: 1900000,
+  is_sold: true,
+)

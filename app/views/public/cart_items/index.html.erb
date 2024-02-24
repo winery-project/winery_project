@@ -1,2 +1,32 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+  <div class="col-8 mx-auto">
+    <% if @cart_items.count == 0 %>
+      <%= link_to "Go wine shopping!", wines_path %>
+    <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>wine</th>
+            <th>price</th>
+            <th>amount</th>
+            <th>total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.wine.name %></td>
+              <td><%= cart_item.wine.price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.total_per_wine %></td>
+              <td><%= link_to 'delete', cart_item_path(cart_item), method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  </div>
+</div>

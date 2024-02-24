@@ -73,7 +73,15 @@
             };
             let radarChart = new Chart(radarCtx, radarConfig);
         </script>
+
+        <div class="row">
+          <%= form_with model: @cart_item do |f| %>
+            <%= f.hidden_field :wine_id, :value => @wine.id %>
+            <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+          <% end %>
+        </div>
     </div>
+
   </div>
 
 </div>

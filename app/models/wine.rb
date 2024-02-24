@@ -4,6 +4,7 @@ class Wine < ApplicationRecord
   belongs_to :company
 
   has_many :wine_comments, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 
   validates :name, presence: true
   validates :introduction, presence: true
