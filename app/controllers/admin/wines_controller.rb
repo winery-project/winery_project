@@ -52,7 +52,7 @@ class Admin::WinesController < ApplicationController
   private
 
   def wine_params
-    params.require(:wine).permit(:name, :introduction, :maturity, :fruity, :flavor, :bitter, :smooth, :aftertaste, :price, :genre_id, :company_id, :country_id, :genre_id, :is_sold)
+    params.require(:wine).permit(:name, :introduction, :maturity, :fruity, :flavor, :bitter, :smooth, :aftertaste, :price, :genre_id, :company_id, :country_id, :genre_id, :is_sold, :wine_image)
   end
 
 end
