@@ -1,2 +1,42 @@
 <h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Registration</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td>
+                <%= link_to admin_customer_path(customer) do %>
+                  <%= customer.id %>
+                <% end %>
+              </td>
+              <td>
+                <%= customer.last_name %> <%= customer.first_name %>
+              </td>
+              <td>
+                <%= l customer.created_at, format: :short %>
+              </td>
+              <td>
+                <%= customer.is_active %>
+              </td>
+              <td>
+                <%= link_to "details", admin_customer_path(customer), class:"btn btn-block btn-info" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
