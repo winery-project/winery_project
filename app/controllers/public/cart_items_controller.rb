@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_cart_item, only: %i[update destroy]
+  before_action :set_cart_item, only: %i[update destroy increase decrease]
 
   def index
     @cart_items = current_customer.cart_items
@@ -13,11 +13,13 @@ class Public::CartItemsController < ApplicationController
 
 
   def increase
-    increase_or_create(params[:cart_item][:wine_id])
+    increase_or_create(@cart_item.wine.id)
+    redirect_to request.referer, notice: 'Successfully added wine to your cart'
   end
 
   def decrease
-    decrease_or_destroy(params[:cart_item][:wine_id])
+    decrease_or_destroy(@cart_item.wine.id)
+    redirect_to request.referer, notice: 'Successfully subtracted wine to your cart'
   end
 
   def destroy

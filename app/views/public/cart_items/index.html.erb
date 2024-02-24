@@ -19,7 +19,15 @@
             <tr>
               <td><%= cart_item.wine.name %></td>
               <td><%= cart_item.wine.price %></td>
-              <td><%= cart_item.amount %></td>
+              <td>
+                <%= link_to decrease_cart_item_path(cart_item), method: :patch do %>
+                  <%= image_tag 'minus.png', size:"20x20" %> 
+                <% end %>
+                <%= cart_item.amount %> 
+                <%= link_to increase_cart_item_path(cart_item), method: :patch do %>
+                  <%= image_tag 'plus.png', size:"20x20"%>
+                <% end %>
+              </td>
               <td><%= cart_item.total_per_wine %></td>
               <td><%= link_to 'delete', cart_item_path(cart_item), method: :delete %></td>
             </tr>
