@@ -1,0 +1,32 @@
+<table>
+  <tbody>
+    <% comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= link_to customer_path(comment.customer_id), remote: true do %>
+            <%= comment.customer.last_name %><%= comment.customer.first_name %>
+          <% end %>
+        </td>
+        <td>
+          <%= comment.comment %>
+        </td>
+        <% if comment.customer == current_customer %>
+          <td>
+            <%= link_to "Destroy", wine_wine_comment_path(comment.wine_id, comment.id), method: :delete, remote: true, class: 'btn btn-sm btn-danger' %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render 'public/shared/error_messages', resource: comment %>
+<%= form_with model: [wine, comment], url: wine_wine_comments_path(wine.id), method: :post, local: false do |f| %>
+  <div class="row">
+    <div class="form-group col">
+      <%= f.text_area :comment, class:"form-control", id: "comment_textarea" %>
+    </div>
+    <div class="form-group col">
+      <%= f.submit '送信', class:"btn btn-success" %>
+    </div>
+  </div>
+<% end %>

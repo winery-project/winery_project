@@ -13,4 +13,6 @@ class Customer < ApplicationRecord
     active: true,
     withdrawn: false
   }
+
+  has_many :wine_comments, dependent: :destroy
 end

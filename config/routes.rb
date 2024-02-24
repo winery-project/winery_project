@@ -54,7 +54,11 @@ Rails.application.routes.draw do
 
     resources :deliveries, only: [:new, :index, :create, :edit, :update]
 
-    resources :wines, only: [:index, :show]
+    resources :wines, only: [:show, :index] do
+      resources :wine_comments, only: [:create, :destroy]
+    end
+  end
+
 
     resources :cart_items, only: [:index, :create, :update]
 
