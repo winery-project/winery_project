@@ -2,7 +2,7 @@
   <div class="container py-3">
     <div class="row justify-content-between">
         <%= link_to root_path, class:"navbar-brand" do %>
-          <i class="fas fa-wine-glass"></i>　WineryProject
+          <p><i class="fas fa-wine-glass"></i>　WineryProject</p>
         <% end %>
       </div>
 
@@ -11,84 +11,84 @@
           <% if customer_signed_in? %>
             <li class="nav-item">
               <%= link_to wines_path, class:"nav-link" do %>
-                <i class="fa-solid fa-wine-bottle"></i> Wines
+                <p><i class="fa-solid fa-wine-bottle"></i> Wines</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to deliveries_path, class:"nav-link" do %>
-                <i class="fas fa-truck"></i> Deliveries
+                <p><i class="fas fa-truck"></i> Deliveries</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to companies_path, class:"nav-link" do %>
-                <i class="fas fa-building"></i> Companies
+                <p><i class="fas fa-building"></i> Companies</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to countries_path, class:"nav-link" do %>
-                <i class="fas fa-globe"></i> Countries
+                <p><i class="fas fa-globe"></i> Countries</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_customer_session_path, method: :delete, class:"nav-link" do %>
-                <i class="fas fa-sign-out-alt"></i> Log out
+                <p><i class="fas fa-sign-out-alt"></i> Log out</p>
               <% end %>
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
               <%= link_to admin_wines_path, class:"nav-link" do %>
-                <i class="fa-solid fa-wine-bottle"></i> Wines
+                <p><i class="fa-solid fa-wine-bottle"></i> Wines</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to admin_countries_path, class:"nav-link" do %>
-                <i class="fas fa-globe"></i> Countries
+                <p><i class="fas fa-globe"></i> Countries</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to admin_companies_path, class:"nav-link" do %>
-                <i class="fas fa-building"></i> Companies
+                <p><i class="fas fa-building"></i> Companies</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to admin_customers_path, class:"nav-link" do %>
-                <i class="fas fa-users"></i> Customers
+                <p><i class="fas fa-users"></i> Customers</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link" do %>
-                <i class="fas fa-sign-out-alt"></i> Log out
+                <p><i class="fas fa-sign-out-alt"></i> Log out</p>
               <% end %>
             </li>
           <% else %>
             <li class="nav-item">
               <%= link_to wines_path, class:"nav-link" do %>
-                <i class="fa-solid fa-wine-bottle"></i> Wines
+                <p><i class="fa-solid fa-wine-bottle"></i> Wines</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to root_path, class:"nav-link" do %>
-                <i class="fas fa-home"></i> Home
+                <p><i class="fas fa-home"></i> Home</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to homes_about_path, class:"nav-link"  do %>
-                <i class="fas fa-link"></i> About
+                <p><i class="fas fa-link"></i> About</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_customer_registration_path, class:"nav-link" do %>
-                <i class="fas fa-user-plus"></i> Sign up
+                <p><i class="fas fa-user-plus"></i> Sign up</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_customer_session_path, class:"nav-link" do %>
-                <i class="fas fa-sign-in-alt"></i> Sign in
+                <p><i class="fas fa-sign-in-alt"></i> Sign in</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_admin_session_path, class:"nav-link" do %>
-                <i class="fas fa-sign-in-alt"></i> (Admin Sign in)
+                <p><i class="fas fa-sign-in-alt"></i> (Admin Sign in)</p>
               <% end %>
             </li>
           <% end %>

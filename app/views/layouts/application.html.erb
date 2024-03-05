@@ -6,22 +6,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/da841da865.js" crossorigin="anonymous"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+    </style>
 
-    <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%# ↑ここの順番を変えることで，cssファイルを優先させた．下にあるほうが優先度高め． %>
+
   </head>
 
-  <body style="padding-bottom: 100px;">
-    <header class="shadow-sm mb-3">
+  <body style="padding-bottom: 50px;">
+    <header class="shadow-sm">
       <%= render 'layouts/header' %>
     </header>
 
-    <main class="px-5 mb-5">
+    <main class="px-5">
       <%= yield %>
+
+      <footer class="text-white" style="height: 50px;">
+        <%= render 'layouts/footer' %>
+      </footer>
+
     </main>
 
-    <footer class="fixed-bottom bg-light text-dark py-4">
-      <%= render 'layouts/footer' %>
-    </footer>
+
   </body>
 </html>
