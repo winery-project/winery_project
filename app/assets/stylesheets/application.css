@@ -1,0 +1,41 @@
+* {
+  font-family: "Noto Serif JP", "Helvetica Neue", Helvetica, Arial, "游ゴシック体", "Yu Gothic",
+    YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif, serif;
+  color: rgb(246, 237, 237);
+}
+
+p {
+  color: rgb(246, 237, 237);
+  margin-bottom: 0;
+}
+
+main {
+  overflow: auto;
+  position: absolute;
+  height: 85%;
+  top: 15%;
+  width: 100%;
+}
+
+
+body {
+  background-image: url('back_image.jpg');
+}
+
+header {
+  width: 100%;
+}
+
+.wine-background {
+  width: 550px;
+  opacity: 80%;
+}
+
+.chatcher {
+  background: linear-gradient(180deg, #b8b8b8 50%, #ffffff 100%);
+  background: -webkit-linear-gradient(-90deg, #b8b8b8 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* -webkit-text-stroke: 0.1px #FFF;
+  text-stroke: 0.1px #FFF; */
+}
