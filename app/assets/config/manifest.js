@@ -2,3 +2,4 @@
 //= link_directory ../stylesheets .css
 //= link denmark.jpeg
 //= link plus.png
+//= link check.png

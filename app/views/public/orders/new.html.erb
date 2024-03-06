@@ -1,2 +1,41 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+        <h3>Order Info</h3>
+        <%= form_with model: @order, url: confirm_orders_path do |f| %>
+          <%= f.radio_button :delivery_option, "0" %> Your Delivery<br>
+          <%= f.radio_button :delivery_option, "1" %> Enrolled Delivery
+            <div class="form-group">
+              <%= f.label :delivery %>
+              <%= f.collection_select :delivery_id, current_customer.deliveries, :id, :integrated_address, include_blank: "Select" %>
+            </div>
+
+          <%= f.radio_button :delivery_option, "2" %> New Delivery
+            <div class="form-group">
+              <%= f.label :delivery_name %>
+              <%= f.text_field :delivery_name %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :delivery_postal_code %>
+              <%= f.text_field :delivery_postal_code %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :delivery_address %>
+              <%= f.text_field :delivery_address %>
+            </div>
+
+            <h3>Payment Method</h3>
+            <div class="form-group">
+              <%= f.label :payment_method %>
+              <%= f.select :payment_method, Order.payment_methods.keys %>
+            </div>
+
+          <%= f.hidden_field :shipping_cost, :value => SHIPPING_COST %>
+          <%= f.hidden_field :total_price, :value => @order.total_price - SHIPPING_COST %>
+          <%= f.submit "Enter Order Infomation", class:"btn btn-secondary"%>
+        <% end %>
+    </div>
+  </div>
+</div>
