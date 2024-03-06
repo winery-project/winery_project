@@ -1,2 +1,68 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <% if @cart_items.count == 0 %>
+        <%= link_to "Go wine shopping!", wines_path %>
+      <% else %>
+        <h3>Cart</h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>wine</th>
+              <th>price</th>
+              <th>amount</th>
+              <th>total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td><%= cart_item.wine.name %></td>
+                <td><%= cart_item.wine.price %></td>
+                <td>
+                  <%= link_to decrease_cart_item_path(cart_item), method: :patch do %>
+                    <%= image_tag 'minus.png', size:"20x20" %> 
+                  <% end %>
+                  <%= cart_item.amount %> 
+                  <%= link_to increase_cart_item_path(cart_item), method: :patch do %>
+                    <%= image_tag 'plus.png', size:"20x20"%>
+                  <% end %>
+                </td>
+                <td><%= cart_item.total_per_wine %></td>
+                <td><%= link_to 'delete', cart_item_path(cart_item), method: :delete %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <h4>
+          Cart Summary
+        </h4>
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th>subtotal</th>
+              <td><%= number_to_currency(@total, unit: "¥", strip_insignificant_zeros: true) %></td>
+            </tr>
+            <tr>
+              <th>postage</th>
+              <td><%= number_to_currency(SHIPPING_COST, unit: "¥", strip_insignificant_zeros: true) %></td>
+            </tr>
+            <tr>
+              <th>total</th>
+              <td><%= number_to_currency(@total + SHIPPING_COST, unit: "¥", strip_insignificant_zeros: true)%></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <%= form_with model: @order, url: new_order_path, method: :get do |f| %>
+          <%= f.hidden_field :shipping_cost, :value => SHIPPING_COST %>
+          <%= f.hidden_field :total_price, :value => @total + SHIPPING_COST %>
+          <%= f.submit "Enter Order Infomation", class:"btn btn-secondary"%>
+        <% end %>
+        <%= link_to "More Wines", wines_path, class:"btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>

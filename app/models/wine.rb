@@ -4,9 +4,14 @@ class Wine < ApplicationRecord
   belongs_to :company
 
   has_many :wine_comments, dependent: :destroy
+
+  has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
+
   has_many :favorite_wines, dependent: :destroy
 
   has_one_attached :wine_image
+
 
   validates :name, presence: true
   validates :introduction, presence: true

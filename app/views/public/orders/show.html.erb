@@ -1,2 +1,40 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto bg-light mb-3">
+      <div class="row">
+        <h3 class="mx-auto">Summary</h3>
+      </div>
+      <div class="row">
+       <p class="mx-auto">Subtotal: <%= @order.total_price%></p>
+      </div>
+      <div class="row">
+        <p class="mx-auto">Shipping: <%= @order.shipping_cost %></p>
+      </div>
+      <div class="row">
+        <h4 class="mx-auto">Total: <%= @order.total_price %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 mx-auto bg-light mb-3">
+      <div class="row">
+        <h3 class="mx-auto">Shipping</h3>
+      </div>
+      <div class="row">
+       <p class="mx-auto"><%= @order.integrated_address %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 mx-auto bg-light">
+      <div class="row">
+        <h3 class="mx-auto">Status</h3>
+      </div>
+      <div class="row">
+       <p class="mx-auto"><%= @order.status %></p>
+      </div>
+    </div>
+  </div>
+</div>
