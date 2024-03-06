@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :wines, only: [:show, :index] do
       resource :favorite_wines, only: [:create, :destroy]
       resources :wine_comments, only: [:create, :destroy]
+      resource :favorite_wines, only: [:create, :destroy]
     end
 
     resources :cart_items, only: [:index, :create, :destroy] do

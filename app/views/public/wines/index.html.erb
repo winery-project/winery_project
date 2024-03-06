@@ -1,10 +1,17 @@
 <h1>ワイン一覧</h1>
 <div class="container">
-  <% @wines.each do |wine| %>
-  <div class="row">
-    <div class="col-sm-4"><li><%= wine.name %></li></div>
-    <div class="col-sm-2"><%= link_to 'Show', wine_path(wine.id) %></div>
-  </div>
-  <% end %>
+  <table style="width:100%;">
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= image_tag wine.get_wine_image(50, 50) %></td>
+        <td><%= wine.name %></td>
+        <td>￥<%= wine.price %></td>
+        <td id="favorite-btns-<%= wine.id %>">
+          <%= render 'public/favorite_wines/favorite', wine: wine %>
+        </td>
+        <td><%= link_to 'Show', wine_path(wine.id) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 

@@ -1,0 +1,9 @@
+<% if wine.favorited_by?(current_customer)  %>
+  <%= link_to wine_favorite_wines_path(wine.id), method: :delete, remote: true do %>
+    <i class="fas fa-heart"></i><%= wine.favorite_wines.count %>
+  <% end %>
+<% else %>
+  <%= link_to wine_favorite_wines_path(wine.id), method: :post, remote: true do %>
+    <i class="far fa-heart"></i><%= wine.favorite_wines.count %>
+  <% end %>
+<% end %>

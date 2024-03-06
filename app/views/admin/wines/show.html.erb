@@ -1,13 +1,13 @@
-<h1>ワイン詳細</h1>
+<h1><%= @wine.name %></h1>
 <div class="container">
-<%= link_to 'ワイン一覧へ', admin_wines_path %>
+
   <div class="row">
     <div class="col-sm-6" style="margin-top: 10px;">
+      <div class="row">
+        <div class="col-sm"><%= image_tag @wine.get_wine_image(200, 200) %></div>
+        <div class="col-sm"><i class="fas fa-heart"></i><%= @wine.favorite_wines.count %></div>
+      </div>
       <table>
-        <tr>
-          <th>名前</th>
-          <td><%= @wine.name %></td>
-        </tr>
         <tr>
           <th>国</th>
           <td><%= @wine.country.name %></td>
@@ -37,6 +37,7 @@
       <div class="comments-index" style="margin-top: 10px;">
         <%= render 'admin/wine_comments/index', comments: @comments %>
       </div>
+      <%= link_to 'ワイン一覧へ', admin_wines_path %>
     </div>
     <div class="col-sm-6">
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

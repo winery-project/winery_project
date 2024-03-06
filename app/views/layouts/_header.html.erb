@@ -10,6 +10,11 @@
         <ul class="nav navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <li class="nav-item">
+              <%= link_to wines_path, class:"nav-link" do %>
+                <i class="fa-solid fa-wine-bottle"></i> Wines
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to deliveries_path, class:"nav-link" do %>
                 <i class="fas fa-truck"></i> Deliveries
               <% end %>
@@ -41,8 +46,13 @@
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
+
               <%= link_to admin_orders_path, class:"nav-link" do %>
                 <i class="fas fa-bag-shopping"></i> Order History
+
+              <%= link_to admin_wines_path, class:"nav-link" do %>
+                <i class="fa-solid fa-wine-bottle"></i> Wines
+
               <% end %>
             </li>
             <li class="nav-item">
@@ -66,6 +76,11 @@
               <% end %>
             </li>
           <% else %>
+            <li class="nav-item">
+              <%= link_to wines_path, class:"nav-link" do %>
+                <i class="fa-solid fa-wine-bottle"></i> Wines
+              <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to root_path, class:"nav-link" do %>
                 <i class="fas fa-home"></i> Home
