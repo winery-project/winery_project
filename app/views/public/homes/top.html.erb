@@ -22,6 +22,7 @@
       <p>種類から探す。</p>
     </div>
   </div>
+
   <div class="row text-center" style="font-size: large; margin: 30% 0; line-height: 2em;">
     <div class="col">
       <p>WineryProjectを見つけていただき、ありがとうございます。<br>
@@ -29,5 +30,32 @@
         貴方の夜のお供に相応しい、最高のワインが見つかりますように。</p>
     </div>
   </div>
+
+  <h2 style="text-align:center;margin-bottom:50px;">貴方へのおすすめ</h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @wines.each do |wine| %>
+      <div class="col">
+        <div class="card border-white bg-transparent">
+          <%= image_tag wine.get_wine_image(50, 50) %>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
