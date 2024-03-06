@@ -7,5 +7,6 @@ class Public::WinesController < ApplicationController
     @wine = Wine.find(params[:id])
     @comments = @wine.wine_comments
     @comment = WineComment.new
+    @cart_item = CartItem.new
   end
 end

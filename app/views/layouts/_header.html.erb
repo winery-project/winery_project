@@ -20,6 +20,16 @@
               <% end %>
             </li>
             <li class="nav-item">
+              <%= link_to cart_items_path, class:"nav-link" do %>
+                <i class="fas fa-cart-shopping"></i> CartItems
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to orders_path, class:"nav-link" do %>
+                <i class="fas fa-bag-shopping"></i> Order History
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to companies_path, class:"nav-link" do %>
                 <p><i class="fas fa-building"></i> Companies</p>
               <% end %>
@@ -36,8 +46,15 @@
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
+
+              <%= link_to admin_orders_path, class:"nav-link" do %>
+                <p><i class="fas fa-bag-shopping"></i> Order History</p>
+              <% end %>
+              
               <%= link_to admin_wines_path, class:"nav-link" do %>
+
                 <p><i class="fa-solid fa-wine-bottle"></i> Wines</p>
+
               <% end %>
             </li>
             <li class="nav-item">

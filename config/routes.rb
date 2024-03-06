@@ -52,21 +52,24 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:new, :index, :create, :edit, :update]
 
     resources :wines, only: [:show, :index] do
+      resource :favorite_wines, only: [:create, :destroy]
       resources :wine_comments, only: [:create, :destroy]
       resource :favorite_wines, only: [:create, :destroy]
     end
 
-    resources :cart_items, only: [:index, :create, :update]
+    resources :cart_items, only: [:index, :create, :destroy] do
+      member do
+        patch 'increase'
+        patch 'decrease'
+      end
+    end
 
-    resources :orders, only: [:index, :show, :new] do
+    resources :orders, only: [:index, :show, :new, :create] do
       collection do
         get 'complete'
-      end
-      member do
         post 'confirm'
       end
     end
 
   end
-
 end
